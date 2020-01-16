@@ -10,12 +10,34 @@ import UIKit
 
 class CheckMark: UIButton {
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
+   //var CheckImage=[UIImage(named:"CheckOFF"),UIImage(named:"CheckON")]
+    
+    let CheckON = UIImage(named: "CheckON.png")! as UIImage
+    let CheckOFF = UIImage(named: "CheckOFF.png")! as UIImage
 
+    var isChecked: Bool = false {
+        didSet{
+            if isChecked == true {
+                self.setImage(CheckON, for:UIControl.State.normal)
+            }else{
+                self.setImage(CheckOFF, for:UIControl.State.normal)
+            }
+        }
+    }
+    
+    override func awakeFromNib() {
+        self.addTarget(self, action:#selector(buttonaction(sender:)), for: UIControl.Event.touchUpInside)
+            self.isChecked = false
+        }
+
+    @objc func buttonaction(sender: UIButton) {
+        if sender == self {
+            isChecked = !isChecked
+        }
+    }
+    
+    
+    
 }
+
+   

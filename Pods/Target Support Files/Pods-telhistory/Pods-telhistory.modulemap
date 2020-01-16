@@ -1,0 +1,6 @@
+framework module Pods_telhistory {
+  umbrella header "Pods-telhistory-umbrella.h"
+
+  export *
+  module * { export * }
+}
