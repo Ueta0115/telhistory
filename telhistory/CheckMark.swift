@@ -10,34 +10,34 @@ import UIKit
 
 class CheckMark: UIButton {
 
-   //var CheckImage=[UIImage(named:"CheckOFF"),UIImage(named:"CheckON")]
-    
-    let CheckON = UIImage(named: "CheckON.png")! as UIImage
-    let CheckOFF = UIImage(named: "CheckOFF.png")! as UIImage
+    let CheckImage=[UIImage(named:"CheckON.png"),UIImage(named:"CheckOFF.png")]
 
-    var isChecked: Bool = false {
-        didSet{
-            if isChecked == true {
-                self.setImage(CheckON, for:UIControl.State.normal)
-            }else{
-                self.setImage(CheckOFF, for:UIControl.State.normal)
+    var isChecked: Bool = false
+    {
+        didSet
+        {
+            if isChecked == true
+            {
+                self.setImage(CheckImage[1], for:UIControl.State.normal)
+            }
+            else
+            {
+                self.setImage(CheckImage[0], for:UIControl.State.normal)
             }
         }
     }
-    
-    override func awakeFromNib() {
+    override func awakeFromNib()
+    {
         self.addTarget(self, action:#selector(buttonaction(sender:)), for: UIControl.Event.touchUpInside)
-            self.isChecked = false
-        }
-
-    @objc func buttonaction(sender: UIButton) {
-        if sender == self {
+        self.isChecked = false
+    }
+    @objc func buttonaction(sender: UIButton)
+    {
+        if sender == self
+        {
             isChecked = !isChecked
         }
     }
-    
-    
-    
 }
 
    

@@ -36,10 +36,17 @@ class ViewController: UIViewController,UIPickerViewDelegate{
     @IBOutlet weak var DateInputButton: UIButton!
     @IBOutlet weak var EditButton: UIBarButtonItem!
     @IBOutlet weak var BackListView: UIBarButtonItem!
+    //チェックボタン
+    @IBOutlet weak var Com_NameCheck: CheckMark!
+    @IBOutlet weak var Com_MenberCheck: CheckMark!
+    @IBOutlet weak var To_nameCheck: CheckMark!
+    @IBOutlet weak var Content_Check: CheckMark!
     //segue 値受取り
     var rowNo : Int?
     //Button押下カウント
     var Tap = 0
+    //保存確認チェック
+    var CheckMarc = [true,true,true,true]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -119,23 +126,6 @@ class ViewController: UIViewController,UIPickerViewDelegate{
         alert.addAction(UIAlertAction(title:"OK",style:UIAlertAction.Style.default,handler: nil))
         present(alert,animated:true,completion:nil)
     }
-    //チェックボックス
-    @IBAction func CanpanyCheck(_ sender: CheckMark)
-    {
-        //print(sender.isChecked)
-    }
-    @IBAction func ResponsibleCheck(_ sender: CheckMark)
-    {
-        //print(sender.isChecked)
-    }
-    @IBAction func ContentCheck(_ sender: CheckMark)
-    {
-        //print(sender.isChecked)
-    }
-    @IBAction func ReceptionCheck(_ sender: CheckMark)
-    {
-        //print(sender.isChecked)
-    }
     //カウント実装
     func CountRegistration() -> Int
     {
@@ -151,28 +141,45 @@ class ViewController: UIViewController,UIPickerViewDelegate{
         else
         {
             CountData = RealmData!.CountNumber + 1
-        }
+                }
         return CountData
+    }
+    //ボタン　チェック
+    @IBAction func Com_Name_C(_ sender: CheckMark)
+    {
+        CheckMarc[0] = sender.isChecked
+    }
+    @IBAction func Com_Menber_C(_ sender: CheckMark)
+    {
+        CheckMarc[1] = sender.isChecked
+    }
+    @IBAction func ToName_C(_ sender: CheckMark)
+    {
+        CheckMarc[2] = sender.isChecked
+    }
+    @IBAction func Content_C(_ sender: CheckMark)
+    {
+        CheckMarc[3] = sender.isChecked
     }
     //ボタンプッシュで登録・エラー処理
     @IBAction func SaveList()
     {
-        if(Com_Name.text == "")
+        if(Com_Name.text == "" && CheckMarc[0] != false)
         {
             PopUp_M(PopTitle: "注意", PopName:"社名を入力してください。")
             return
         }
-        if(Com_Menber.text == "")
+        if(Com_Menber.text == "" && CheckMarc[1] != false)
         {
             PopUp_M(PopTitle: "注意", PopName:"担当を入力してください。")
             return
         }
-        if(To_Name.text == "")
+        if(To_Name.text == "" && CheckMarc[2] != false)
         {
             PopUp_M(PopTitle: "注意", PopName:"宛先を入力してください。")
             return
         }
-        if(Content.text == "")
+        if(Content.text == "" && CheckMarc[3] != false)
         {
             PopUp_M(PopTitle: "注意", PopName:"内容を入力してください。")
             return
@@ -221,7 +228,11 @@ class ViewController: UIViewController,UIPickerViewDelegate{
         EditButton.tintColor = UIColor.red
         //登録ボタン非表示
         SaveAction.isHidden = true
-        SaveAction.tintColor = UIColor.blue
+        //チェックボタン非表示
+        Com_NameCheck.isHidden = true
+        Com_MenberCheck.isHidden = true
+        To_nameCheck.isHidden = true
+        Content_Check.isHidden = true
         //Realmインスタンス作成
         let realm = try! Realm()
         let RealmData = realm.objects(RealmController.self).filter("CountNumber == %@",rowNo!)
@@ -282,10 +293,9 @@ class ViewController: UIViewController,UIPickerViewDelegate{
                 RealmData.first!.Recepter = Recepter.text!
             }
             Tap = 0
+            //ポップアップまで表示を行い、処理終了後画面遷移
             let popup = UIAlertController(title: "登録完了", message: "登録が完了しました。", preferredStyle: UIAlertController.Style.alert)
-            //ポップアップまで表示を行い、画面遷移のメソッドを呼び出す
             let OK = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler:{(action: UIAlertAction!) in
-                //アラート表示後遷移
                 self.performSegue(withIdentifier: "NEXT.CheckView", sender: nil)
             })
             popup.addAction(OK)
