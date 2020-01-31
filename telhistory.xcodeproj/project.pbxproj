@@ -19,7 +19,7 @@
 		CED05B8F2355CE77004D5C3D /* BoderOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED05B8E2355CE77004D5C3D /* BoderOption.swift */; };
 		CED05B912355D159004D5C3D /* BoderOption_B.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED05B902355D159004D5C3D /* BoderOption_B.swift */; };
 		ED31A3836AB5A41A3E590845 /* Pods_telhistory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90BA4842DA93F0D04ABA0A66 /* Pods_telhistory.framework */; };
-		FE62BB7323C71C32007458DE /* RealmController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE62BB7223C71C32007458DE /* RealmController.swift */; };
+		FE7D3B6C23E2D02600A76AD2 /* RealmController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7D3B6B23E2D02600A76AD2 /* RealmController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,7 +60,7 @@
 		CECCC420234AE01E00596D97 /* CheckMark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckMark.swift; sourceTree = "<group>"; };
 		CED05B8E2355CE77004D5C3D /* BoderOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoderOption.swift; sourceTree = "<group>"; };
 		CED05B902355D159004D5C3D /* BoderOption_B.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoderOption_B.swift; sourceTree = "<group>"; };
-		FE62BB7223C71C32007458DE /* RealmController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RealmController.swift; path = ../../RealmController.swift; sourceTree = "<group>"; };
+		FE7D3B6B23E2D02600A76AD2 /* RealmController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,9 +126,9 @@
 				CE4498872345B1D700CB4F29 /* AppDelegate.swift */,
 				CE4498892345B1D700CB4F29 /* ViewController.swift */,
 				CEC657DB2346D86A00424E64 /* ConfirmationViewController.swift */,
+				FE7D3B6B23E2D02600A76AD2 /* RealmController.swift */,
 				CE44988B2345B1D700CB4F29 /* Main.storyboard */,
 				CECCC420234AE01E00596D97 /* CheckMark.swift */,
-				FE62BB7223C71C32007458DE /* RealmController.swift */,
 				CED05B8E2355CE77004D5C3D /* BoderOption.swift */,
 				CED05B902355D159004D5C3D /* BoderOption_B.swift */,
 				CE44988E2345B1DA00CB4F29 /* Assets.xcassets */,
@@ -234,6 +234,17 @@
 				TargetAttributes = {
 					CE4498832345B1D700CB4F29 = {
 						CreatedOnToolsVersion = 10.3;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 0;
+							};
+							com.apple.BackgroundModes = {
+								enabled = 0;
+							};
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 					CE4498972345B1DA00CB4F29 = {
 						CreatedOnToolsVersion = 10.3;
@@ -340,11 +351,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				CEC657DC2346D86A00424E64 /* ConfirmationViewController.swift in Sources */,
-				FE62BB7323C71C32007458DE /* RealmController.swift in Sources */,
 				CE44988A2345B1D700CB4F29 /* ViewController.swift in Sources */,
 				CED05B912355D159004D5C3D /* BoderOption_B.swift in Sources */,
 				CE4498882345B1D700CB4F29 /* AppDelegate.swift in Sources */,
 				CECCC421234AE01E00596D97 /* CheckMark.swift in Sources */,
+				FE7D3B6C23E2D02600A76AD2 /* RealmController.swift in Sources */,
 				CED05B8F2355CE77004D5C3D /* BoderOption.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -521,7 +532,9 @@
 			baseConfigurationReference = AAE6268B26F2C41A8B46C782 /* Pods-telhistory.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = telhistory/telhistory.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = telhistory/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -540,7 +553,9 @@
 			baseConfigurationReference = 1E679577488B0C97CDA2FCDB /* Pods-telhistory.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = telhistory/telhistory.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = telhistory/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -560,6 +575,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = telhistoryTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -580,6 +596,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = telhistoryTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
